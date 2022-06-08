@@ -3,11 +3,15 @@ package com.codepath.apps.restclienttemplate;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
@@ -21,12 +25,14 @@ import okhttp3.Headers;
 
 public class ComposeActivity extends AppCompatActivity {
 
-    public static final int MAX_TWEET_LENGTH = 140;
+    public static final int MAX_TWEET_LENGTH = 280;
     public static final String TAG = "ComposeActivity";
 
     EditText etCompose;
     Button btnTweet;
     TwitterClient client;
+    TextView tvCharacterCount;
+    int color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,9 @@ public class ComposeActivity extends AppCompatActivity {
         client = TwitterApplication.getRestClient(this);
         etCompose = findViewById(R.id.etCompose);
         btnTweet = findViewById(R.id.btnTweet);
+        color = btnTweet.getCurrentTextColor();
+        tvCharacterCount = findViewById(R.id.tvCharacterCount);
+        tvCharacterCount.setText(String.valueOf(MAX_TWEET_LENGTH));
 
         btnTweet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +79,29 @@ public class ComposeActivity extends AppCompatActivity {
                         Log.e(TAG, "onFailure to publish tweet", throwable);
                     }
                 });
+            }
+        });
+
+        etCompose.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+                tvCharacterCount.setText(charSequence.length() + "/" + MAX_TWEET_LENGTH);
+                if(charSequence.length() > MAX_TWEET_LENGTH){
+                    btnTweet.setTextColor(Color.parseColor("#FF0000"));
+                }
+                else {
+                    btnTweet.setTextColor(color);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
     }
