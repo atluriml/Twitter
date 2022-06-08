@@ -1,10 +1,12 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +21,7 @@ import java.util.List;
 
 public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder>{
 
+    public static final String TAG = "TweetsAdapter";
     Context context;
     List<Tweet> tweets;
 
@@ -60,6 +63,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         TextView tvScreenName;
         ImageView ivTweetMedia;
         TextView tvTimeStamp;
+        ImageButton btnReply;
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
@@ -68,6 +72,16 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvBody = itemView.findViewById(R.id.tvBody);
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
             tvTimeStamp = itemView.findViewById(R.id.tvTimeStamp);
+            btnReply = itemView.findViewById(R.id.btnReply);
+            btnReply.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, ComposeActivity.class);
+                    intent.putExtra( "tweet_username", tvScreenName.getText());
+                    Log.i(TAG, "username that is being replied to: " + tvScreenName.getText());
+                    context.startActivity(intent);
+                }
+            });
         }
 
         public void bind(Tweet tweet) throws ParseException {

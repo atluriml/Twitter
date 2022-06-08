@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +36,8 @@ public class ComposeActivity extends AppCompatActivity {
     Button btnTweet;
     TwitterClient client;
     TextView tvCharacterCount;
+    TextView tvReplyingTo;
+
     int color;
 
     @Override
@@ -48,6 +51,16 @@ public class ComposeActivity extends AppCompatActivity {
         color = btnTweet.getCurrentTextColor();
         tvCharacterCount = findViewById(R.id.tvCharacterCount);
         tvCharacterCount.setText(String.valueOf(MAX_TWEET_LENGTH));
+        tvReplyingTo = findViewById(R.id.tvReplyingTo);
+
+        // checks to see if the user is replying to a tweet
+        if (getIntent().hasExtra("tweet_username")){
+            Intent intent = getIntent();
+            tvReplyingTo.setText("Replying to @" + intent.getStringExtra("tweet_username"));
+        }
+        else {
+            tvReplyingTo.setVisibility(View.GONE);
+        }
 
         btnTweet.setOnClickListener(new View.OnClickListener() {
             @Override

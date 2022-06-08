@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ComposeActivity">
+    tools:context=".ComposeActivity">
 
     <EditText
         android:id="@+id/etCompose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tvReplyingTo"
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/what_s_happening"
@@ -36,4 +37,13 @@
         android:layout_marginRight="14dp"
         android:layout_toLeftOf="@id/btnTweet"
         tools:text="count" />
+
+    <TextView
+        android:id="@+id/tvReplyingTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="67dp"
+        android:textSize="12sp"
+        tools:text="Replying to @" />
 </RelativeLayout>
