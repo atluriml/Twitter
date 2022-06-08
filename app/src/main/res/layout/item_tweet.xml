@@ -40,8 +40,28 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_marginLeft="2dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
         android:visibility="visible"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvTimeStamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="9dp"
+        android:layout_toRightOf="@id/tvScreenName"
+        tools:text="8hr" />
+
+    <ImageButton
+        android:id="@+id/btnReply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivTweetMedia"
+        android:layout_marginTop="1dp"
+        android:layout_toRightOf="@id/ivProfileImage"
+        android:background="#F4F4F4"
+        android:tint="#AAB8C2"
+        app:srcCompat="@drawable/vector_compose_dm_fab"
+        tools:srcCompat="@drawable/vector_compose_dm_fab" />
 </RelativeLayout>
