@@ -41,9 +41,10 @@
         android:layout_below="@id/ivProfileDetail"
         android:layout_marginStart="5dp"
         android:layout_marginTop="9dp"
-        tools:text="This is the news for the day"
         android:autoLink="all"
-        android:linksClickable="true"/>
+        android:linksClickable="true"
+        android:textColor="#000000"
+        tools:text="This is the news for the day" />
 
     <ImageView
         android:id="@+id/ivDetailMedia"
@@ -64,5 +65,39 @@
         android:layout_below="@id/ivDetailMedia"
         android:layout_marginStart="5dp"
         android:layout_marginTop="9dp"
+        android:textColor="#000000"
         tools:text="4:50 PM" />
+
+    <TextView
+        android:id="@+id/tvNumRetweets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDetailTimeStamp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:textColor="#000000"
+        tools:text="59 Retweets " />
+
+    <TextView
+        android:id="@+id/tvNumLikes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDetailTimeStamp"
+        android:layout_marginStart="45dp"
+        android:layout_marginLeft="163dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/tvNumRetweets"
+        android:textColor="#000000"
+        tools:text="30 Likes" />
+
+    <TextView
+        android:id="@+id/tvNumQuotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDetailTimeStamp"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/tvNumRetweets"
+        android:textColor="#000000"
+        tools:text="5 Quote Tweets" />
 </RelativeLayout>

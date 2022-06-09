@@ -26,7 +26,9 @@ public class Tweet {
     public String createdAt;
     public User user;
     public String tweet_URL;
-    public String timeStamp;
+    public String retweets;
+    public String likes;
+    public String quoteTweets;
 
     // empty constructor needed by Parceler library
     public Tweet() {}
@@ -40,7 +42,16 @@ public class Tweet {
         }
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
+        if(jsonObject.has("quote_count")) {
+            tweet.quoteTweets = jsonObject.getString("quote_count");
+        }
+        if (jsonObject.has("favorite_count")){
+            tweet.likes = jsonObject.getString("favorite_count");
 
+        }
+        if (jsonObject.has("retweet_count")) {
+            tweet.retweets = jsonObject.getString("retweet_count");
+        }
         if (!(jsonObject.getJSONObject("entities").has("media"))){
             Log.d("TWEET", "No pic");
             tweet.tweet_URL = "none";
@@ -85,12 +96,21 @@ public class Tweet {
         return createdAt;
     }
 
-    public String getTimeStamp() {
-        return timeStamp;
-    }
 
     public String getTweet_URL() {
         return tweet_URL;
+    }
+
+    public String getLikes() {
+        return likes;
+    }
+
+    public String getQuoteTweets() {
+        return quoteTweets;
+    }
+
+    public String getRetweets() {
+        return retweets;
     }
 
     public User getUser() {

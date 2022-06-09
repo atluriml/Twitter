@@ -25,6 +25,9 @@ public class TweetDetailActivity extends AppCompatActivity {
     TextView tvDetailBody;
     TextView tvDetailTimeStamp;
     TextView tvDetailName;
+    TextView tvNumRetweets;
+    TextView tvNumLikes;
+    TextView tvNumQuotes;
     ImageView ivProfileDetail;
     ImageView ivDetailMedia;
 
@@ -37,6 +40,9 @@ public class TweetDetailActivity extends AppCompatActivity {
         tvDetailName = (TextView) findViewById(R.id.tvDetailName);
         tvDetailUser = (TextView) findViewById(R.id.tvDetailUser);
         tvDetailTimeStamp = (TextView) findViewById(R.id.tvDetailTimeStamp);
+        tvNumRetweets = (TextView) findViewById(R.id.tvNumRetweets);
+        tvNumLikes = (TextView) findViewById(R.id.tvNumLikes);
+        tvNumQuotes = (TextView) findViewById(R.id.tvNumQuotes);
         ivDetailMedia = (ImageView) findViewById(R.id.ivDetailMedia);
         ivProfileDetail = (ImageView) findViewById(R.id.ivProfileDetail);
 
@@ -50,6 +56,24 @@ public class TweetDetailActivity extends AppCompatActivity {
             tvDetailTimeStamp.setText(tweet.getRelativeTimeAgo(tweet.createdAt));
         } catch (ParseException e) {
             e.printStackTrace();
+        }
+        if (tweet.getQuoteTweets() == null){
+            tvNumQuotes.setText("0 Quote Tweets");
+        }
+        else {
+            tvNumQuotes.setText(tweet.getQuoteTweets() + " Quote Tweets");
+        }
+        if (tweet.getRetweets() == null){
+            tvNumRetweets.setText("0 Retweets");
+        }
+        else {
+            tvNumRetweets.setText(tweet.getRetweets() + " Retweets");
+        }
+        if (tweet.getLikes() == null){
+            tvNumLikes.setText("0 Likes");
+        }
+        else {
+            tvNumLikes.setText(tweet.getLikes() + " Likes");
         }
 
         Glide.with(this).load(tweet.user.profileImageUrl).into(ivProfileDetail);
