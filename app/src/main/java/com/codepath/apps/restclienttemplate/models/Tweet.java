@@ -76,4 +76,24 @@ public class Tweet {
 
         return relativeDate;
     }
+
+    public String getBody() {
+        return body;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public String getTimeStamp() {
+        return timeStamp;
+    }
+
+    public String getTweet_URL() {
+        return tweet_URL;
+    }
+
+    public User getUser() {
+        return user;
+    }
 }

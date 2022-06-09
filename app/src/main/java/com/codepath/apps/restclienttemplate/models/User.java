@@ -21,4 +21,8 @@ public class User {
         user.profileImageUrl = jsonObject.getString("profile_image_url_https");
         return user;
     }
+
+    public String getProfileImageUrl() {
+        return profileImageUrl;
+    }
 }

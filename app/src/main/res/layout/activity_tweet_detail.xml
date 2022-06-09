@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TweetDetailActivity">
+
+    <ImageView
+        android:id="@+id/ivProfileDetail"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        app:srcCompat="@drawable/ic_vector_person_stroke"
+        tools:layout_editor_absoluteX="2dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <TextView
+        android:id="@+id/tvDetailName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_toRightOf="@id/ivProfileDetail"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        tools:text="BBC News" />
+
+    <TextView
+        android:id="@+id/tvDetailUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDetailName"
+        android:layout_marginStart="5dp"
+        android:layout_toRightOf="@id/ivProfileDetail"
+        android:textSize="10sp"
+        tools:text="BBCNews" />
+
+    <TextView
+        android:id="@+id/tvDetailBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivProfileDetail"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="9dp"
+        tools:text="This is the news for the day"
+        android:autoLink="all"
+        android:linksClickable="true"/>
+
+    <ImageView
+        android:id="@+id/ivDetailMedia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDetailBody"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="-1dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginRight="1dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvDetailTimeStamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivDetailMedia"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="9dp"
+        tools:text="4:50 PM" />
+</RelativeLayout>
