@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/ivTweetMedia"
-        android:layout_marginLeft="52dp"
+        android:layout_marginLeft="33dp"
         android:layout_marginTop="1dp"
         android:layout_toRightOf="@id/ivProfileImage"
         android:background="@android:color/transparent"
@@ -70,4 +70,50 @@
         app:tint="#AAB8C2"
         tools:ignore="SpeakableTextPresentCheck"
         tools:srcCompat="@drawable/vector_compose_dm_fab" />
+
+    <ImageButton
+        android:id="@+id/btnLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivTweetMedia"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="1dp"
+        android:layout_toRightOf="@id/btnReply"
+        android:background="@android:color/transparent"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:srcCompat="@drawable/ic_vector_heart_stroke"
+        app:tint="#AAB8C2"
+        tools:ignore="SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
+
+    <ImageButton
+        android:id="@+id/btnLikeOn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivTweetMedia"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="1dp"
+        android:layout_toRightOf="@id/btnReply"
+        android:background="@android:color/transparent"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/ic_vector_heart"
+        app:tint="#FF1D4C"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btnRetweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivTweetMedia"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="1dp"
+        android:layout_toRightOf="@id/btnLike"
+        android:background="@android:color/transparent"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:tint="#AAB8C2"
+        app:srcCompat="@drawable/ic_vector_retweet_stroke"
+        tools:ignore="SpeakableTextPresentCheck"/>
 </RelativeLayout>

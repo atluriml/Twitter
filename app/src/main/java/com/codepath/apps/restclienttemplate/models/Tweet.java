@@ -22,6 +22,7 @@ import java.util.Locale;
 @Parcel
 public class Tweet {
 
+    public static final String TAG = "Tweet Class";
     public String body;
     public String createdAt;
     public User user;
@@ -29,6 +30,8 @@ public class Tweet {
     public String retweets;
     public String likes;
     public String quoteTweets;
+    public boolean isLiked;
+    public long id;
 
     // empty constructor needed by Parceler library
     public Tweet() {}
@@ -60,6 +63,8 @@ public class Tweet {
             Log.d("TWEET HAS PIC", jsonObject.getJSONObject("entities").getJSONArray("media").getJSONObject(0).getString("media_url"));
             tweet.tweet_URL = jsonObject.getJSONObject("entities").getJSONArray("media").getJSONObject(0).getString("media_url");
         }
+        tweet.isLiked = jsonObject.getBoolean("favorited");
+        tweet.id = jsonObject.getLong("id");
         return tweet;
     }
 
@@ -115,5 +120,19 @@ public class Tweet {
 
     public User getUser() {
         return user;
+    }
+
+    public Boolean changeLikedStatus() {
+        if (isLiked){
+            isLiked = false;
+        }
+        else {
+            isLiked = true;
+        }
+        return isLiked;
+    }
+
+    public long getId() {
+        return id;
     }
 }
