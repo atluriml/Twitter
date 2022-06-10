@@ -100,4 +100,49 @@
         android:layout_toRightOf="@id/tvNumRetweets"
         android:textColor="#000000"
         tools:text="5 Quote Tweets" />
+
+    <ImageButton
+        android:id="@+id/btnReplyDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvNumRetweets"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/transparent"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:srcCompat="@drawable/vector_compose_dm_fab"
+        app:tint="#AAB8C2"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:srcCompat="@drawable/vector_compose_dm_fab" />
+
+    <ImageButton
+        android:id="@+id/btnLikeDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvNumLikes"
+        android:layout_marginLeft="157dp"
+        android:layout_marginTop="1dp"
+        android:layout_toRightOf="@id/btnReplyDetail"
+        android:background="@android:color/transparent"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:srcCompat="@drawable/ic_vector_heart_stroke"
+        app:tint="#AAB8C2"
+        tools:ignore="SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
+
+    <ImageButton
+        android:id="@+id/btnRetweetDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvNumRetweets"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="1dp"
+        android:layout_toRightOf="@id/btnReplyDetail"
+        android:background="@android:color/transparent"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:srcCompat="@drawable/ic_vector_retweet_stroke"
+        app:tint="#AAB8C2"
+        tools:ignore="SpeakableTextPresentCheck" />
 </RelativeLayout>

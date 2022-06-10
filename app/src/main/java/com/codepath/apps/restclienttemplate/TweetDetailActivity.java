@@ -2,10 +2,12 @@ package com.codepath.apps.restclienttemplate;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcel;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,7 +21,6 @@ import java.text.ParseException;
 public class TweetDetailActivity extends AppCompatActivity {
 
     public static final String TAG = "TweetDetailActivity";
-
     Tweet tweet;
     TextView tvDetailUser;
     TextView tvDetailBody;
@@ -36,17 +37,17 @@ public class TweetDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tweet_detail);
 
-        tvDetailBody = (TextView) findViewById(R.id.tvDetailBody);
-        tvDetailName = (TextView) findViewById(R.id.tvDetailName);
-        tvDetailUser = (TextView) findViewById(R.id.tvDetailUser);
-        tvDetailTimeStamp = (TextView) findViewById(R.id.tvDetailTimeStamp);
-        tvNumRetweets = (TextView) findViewById(R.id.tvNumRetweets);
-        tvNumLikes = (TextView) findViewById(R.id.tvNumLikes);
-        tvNumQuotes = (TextView) findViewById(R.id.tvNumQuotes);
-        ivDetailMedia = (ImageView) findViewById(R.id.ivDetailMedia);
-        ivProfileDetail = (ImageView) findViewById(R.id.ivProfileDetail);
+        tvDetailBody = findViewById(R.id.tvDetailBody);
+        tvDetailName = findViewById(R.id.tvDetailName);
+        tvDetailUser = findViewById(R.id.tvDetailUser);
+        tvDetailTimeStamp = findViewById(R.id.tvDetailTimeStamp);
+        tvNumRetweets = findViewById(R.id.tvNumRetweets);
+        tvNumLikes = findViewById(R.id.tvNumLikes);
+        tvNumQuotes = findViewById(R.id.tvNumQuotes);
+        ivDetailMedia = findViewById(R.id.ivDetailMedia);
+        ivProfileDetail = findViewById(R.id.ivProfileDetail);
 
-        tweet = (Tweet) Parcels.unwrap(getIntent().getParcelableExtra(Tweet.class.getSimpleName()));
+        tweet = Parcels.unwrap(getIntent().getParcelableExtra(Tweet.class.getSimpleName()));
         Log.d(TAG, String.format("Showing details for '%s'", tweet.getBody()));
 
         tvDetailUser.setText("@" + tweet.getUser().screenName);
