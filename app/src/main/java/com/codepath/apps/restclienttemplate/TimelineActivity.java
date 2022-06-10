@@ -62,7 +62,7 @@ public class TimelineActivity extends AppCompatActivity {
         scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                max_id = tweets.get(tweets.size() - 1 ).id;
+                max_id = tweets.get(tweets.size() - 2).id;
                 loadNextDataFromApi(max_id);
             }
         };
