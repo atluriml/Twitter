@@ -47,7 +47,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/atluriml/Twitter/raw/master/ezgif.com-gif-maker.gif' title='Twitter Walkthrough' width='250' alt='Twitter Walkthrough'/>
+<img src='https://github.com/atluriml/Twitter/raw/master/twitter.gif' title='Twitter Walkthrough' width='250' alt='Twitter Walkthrough'/>
 
 
 ## Notes
