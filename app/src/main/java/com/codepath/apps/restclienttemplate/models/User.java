@@ -25,4 +25,8 @@ public class User {
     public String getProfileImageUrl() {
         return profileImageUrl;
     }
+
+    public String getName() {
+        return name;
+    }
 }

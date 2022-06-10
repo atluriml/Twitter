@@ -30,7 +30,9 @@ public class Tweet {
     public String retweets;
     public String likes;
     public String quoteTweets;
+    public String replies;
     public boolean isLiked;
+    public boolean isRetweeted;
     public long id;
 
     // empty constructor needed by Parceler library
@@ -55,6 +57,9 @@ public class Tweet {
         if (jsonObject.has("retweet_count")) {
             tweet.retweets = jsonObject.getString("retweet_count");
         }
+        if (jsonObject.has("reply_count")){
+            tweet.replies = jsonObject.getString("reply_count");
+        }
         if (!(jsonObject.getJSONObject("entities").has("media"))){
             Log.d("TWEET", "No pic");
             tweet.tweet_URL = "none";
@@ -65,6 +70,7 @@ public class Tweet {
         }
         tweet.isLiked = jsonObject.getBoolean("favorited");
         tweet.id = jsonObject.getLong("id");
+        tweet.isRetweeted = jsonObject.getBoolean("retweeted");
         return tweet;
     }
 
@@ -123,16 +129,20 @@ public class Tweet {
     }
 
     public Boolean changeLikedStatus() {
-        if (isLiked){
-            isLiked = false;
-        }
-        else {
-            isLiked = true;
-        }
+        isLiked = !isLiked;
         return isLiked;
+    }
+
+    public Boolean changeRetweetStatus() {
+        isRetweeted = !isRetweeted;
+        return isRetweeted;
     }
 
     public long getId() {
         return id;
+    }
+
+    public String getReplies() {
+        return replies;
     }
 }

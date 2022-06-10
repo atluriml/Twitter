@@ -78,6 +78,9 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         ImageButton btnReply;
         ImageButton btnRetweet;
         ImageButton btnLike;
+        TextView tvLikes;
+        TextView tvReply;
+        TextView tvRetweet;
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
@@ -87,6 +90,9 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
             tvTimeStamp = itemView.findViewById(R.id.tvTimeStamp);
             client = TwitterApplication.getRestClient(context);
+            tvLikes = itemView.findViewById(R.id.tvLikes);
+            tvReply = itemView.findViewById(R.id.tvReply);
+            tvRetweet = itemView.findViewById(R.id.tvRetweet);
 
             itemView.setOnClickListener(this);
 
@@ -106,11 +112,45 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             btnRetweet.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(context,ComposeActivity.class);
-                    intent.putExtra("retweeting", tvBody.getText());
-                    context.startActivity(intent);
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        Tweet tweet = tweets.get(position);
+                        // user is retweeting tweet
+                        if(!tweet.isRetweeted) {
+                            btnRetweet.setImageResource(R.drawable.ic_vector_retweet);
+                            btnRetweet.setColorFilter(Color.parseColor("#ff17bf63"));
+                            client.retweet(tweet.user.getName(), tweet.getId(), new JsonHttpResponseHandler() {
+                                @Override
+                                public void onSuccess(int statusCode, Headers headers, JSON json) {
+                                    Log.i(TAG, "onSuccess to retweet tweet");
+                                    tweet.changeRetweetStatus();
+                                }
+                                @Override
+                                public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
+                                    Log.e(TAG, "onFailure to retweet tweet", throwable);
+                                }
+                            });
+                        }
+                        // user is unRetweeting tweet
+                        else{
+                            btnRetweet.setImageResource(R.drawable.ic_vector_retweet_stroke);
+                            btnRetweet.setColorFilter(Color.parseColor("#AAB8C2"));
+                            client.unRetweet(tweet.user.name, tweet.getId(), new JsonHttpResponseHandler() {
+                                @Override
+                                public void onSuccess(int statusCode, Headers headers, JSON json) {
+                                    Log.i(TAG, "onSuccess to unRetweet tweet");
+                                    tweet.changeRetweetStatus();
+                                }
+                                @Override
+                                public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
+                                    Log.e(TAG, "onFailure to unRetweet tweet", throwable);
+                                }
+                            });
+                        }
+                    }
                 }
             });
+
             btnLike = itemView.findViewById(R.id.btnLike);
             btnLike.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -121,6 +161,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                         // user is liking tweet
                         if(!tweet.isLiked) {
                             btnLike.setImageResource(R.drawable.ic_vector_heart);
+                            btnLike.setColorFilter(Color.parseColor("#ffe0245e"));
                             client.updateLikeStatus(tweet.getId(), new JsonHttpResponseHandler() {
                                 @Override
                                 public void onSuccess(int statusCode, Headers headers, JSON json) {
@@ -137,6 +178,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                         // user is unliking tweet
                         else{
                             btnLike.setImageResource(R.drawable.ic_vector_heart_stroke);
+                            btnLike.setColorFilter(Color.parseColor("#AAB8C2"));
                             client.updateUnlikeStatus(tweet.getId(), new JsonHttpResponseHandler() {
                                 @Override
                                 public void onSuccess(int statusCode, Headers headers, JSON json) {
@@ -173,7 +215,19 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             }
             else{
                 btnLike.setImageResource(R.drawable.ic_vector_heart_stroke);
+                btnLike.setColorFilter(Color.parseColor("#AAB8C2"));
             }
+            if (tweet.isRetweeted){
+                btnRetweet.setImageResource(R.drawable.ic_vector_retweet);
+                btnRetweet.setColorFilter(Color.parseColor("#ff17bf63"));
+            }
+            else{
+                btnRetweet.setImageResource(R.drawable.ic_vector_retweet_stroke);
+                btnRetweet.setColorFilter(Color.parseColor("#AAB8C2"));
+            }
+            tvRetweet.setText(tweet.getRetweets());
+            tvLikes.setText(tweet.getLikes());
+            tvReply.setText(tweet.getReplies());
         }
 
         @Override

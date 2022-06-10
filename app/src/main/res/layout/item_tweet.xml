@@ -87,22 +87,6 @@
         tools:ignore="SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
 
     <ImageButton
-        android:id="@+id/btnLikeOn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ivTweetMedia"
-        android:layout_marginLeft="52dp"
-        android:layout_marginTop="1dp"
-        android:layout_toRightOf="@id/btnReply"
-        android:background="@android:color/transparent"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        android:visibility="invisible"
-        app:srcCompat="@drawable/ic_vector_heart"
-        app:tint="#FF1D4C"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <ImageButton
         android:id="@+id/btnRetweet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -113,7 +97,37 @@
         android:background="@android:color/transparent"
         android:minWidth="48dp"
         android:minHeight="48dp"
-        app:tint="#AAB8C2"
         app:srcCompat="@drawable/ic_vector_retweet_stroke"
-        tools:ignore="SpeakableTextPresentCheck"/>
+        app:tint="#AAB8C2"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/tvLikes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivTweetMedia"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@id/btnLike"
+        tools:text="10" />
+
+    <TextView
+        android:id="@+id/tvReply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivTweetMedia"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@id/btnReply"
+        tools:text="10" />
+
+    <TextView
+        android:id="@+id/tvRetweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivTweetMedia"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@id/btnRetweet"
+        tools:text="10" />
 </RelativeLayout>
