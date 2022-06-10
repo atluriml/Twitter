@@ -2,7 +2,7 @@
 
 Twitter is an android app that allows a user to view their Twitter timeline and post a new tweet. The app utilizes [Twitter REST API](https://dev.twitter.com/rest/public).
 
-Time spent: **X** hours spent in total
+Time spent: **29** hours spent in total
 
 ## User Stories
 
@@ -53,7 +53,7 @@ GIF created with [Kap](https://getkap.co/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+- One of the biggest challenges I faced was when I tried to like and retweet tweets--I was having difficutly posting to the server
 
 ## Open-source libraries used
 
