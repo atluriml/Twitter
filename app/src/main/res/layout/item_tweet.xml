@@ -130,4 +130,14 @@
         android:layout_marginTop="16dp"
         android:layout_toRightOf="@id/btnRetweet"
         tools:text="10" />
+
+    <View
+        android:id="@+id/tweetSeparator"
+        android:layout_width="440dp"
+        android:layout_height="2dp"
+        android:layout_below="@id/btnRetweet"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:background="#AAB8C2" />
+
 </RelativeLayout>
