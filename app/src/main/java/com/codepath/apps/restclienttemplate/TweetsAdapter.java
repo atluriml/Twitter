@@ -68,6 +68,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
 
         ImageView ivProfileImage;
         TextView tvBody;
+        TextView tvName;
         TextView tvScreenName;
         ImageView ivTweetMedia;
         TextView tvTimeStamp;
@@ -89,6 +90,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvLikes = itemView.findViewById(R.id.tvLikes);
             tvReply = itemView.findViewById(R.id.tvReply);
             tvRetweet = itemView.findViewById(R.id.tvRetweet);
+            tvName = itemView.findViewById(R.id.tvName);
 
             itemView.setOnClickListener(this);
 
@@ -194,7 +196,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
 
         public void bind(Tweet tweet) throws ParseException {
             tvBody.setText(tweet.body);
-            tvScreenName.setText(tweet.user.screenName);
+            tvScreenName.setText("@" + tweet.user.screenName);
+            tvName.setText(tweet.user.name);
             tvTimeStamp.setText(tweet.getRelativeTimeAgo(tweet.createdAt));
             Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
             if (tweet.tweet_URL == "none") {

@@ -15,6 +15,7 @@
         android:id="@+id/tvScreenName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tvName"
         android:layout_marginStart="2dp"
         android:layout_marginLeft="2dp"
         android:layout_toEndOf="@+id/ivProfileImage"
@@ -28,11 +29,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvScreenName"
         android:layout_marginLeft="2dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="6dp"
         android:layout_toRightOf="@id/ivProfileImage"
-        tools:text="This is my tweet!!"
         android:autoLink="all"
-        android:linksClickable="true" />
+        android:linksClickable="true"
+        tools:text="This is my tweet!!" />
 
     <ImageView
         android:id="@+id/ivTweetMedia"
@@ -52,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="9dp"
-        android:layout_toRightOf="@id/tvScreenName"
+        android:layout_toRightOf="@id/tvName"
         tools:text="8hr" />
 
     <ImageButton
@@ -139,5 +140,12 @@
         android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
         android:background="#AAB8C2" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/ivProfileImage"
+        tools:text="BBC News" />
 
 </RelativeLayout>
