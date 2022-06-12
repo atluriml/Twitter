@@ -56,7 +56,7 @@ public class ComposeActivity extends AppCompatActivity {
         // checks to see if the user is replying to a tweet
         if (getIntent().hasExtra("tweet_username")){
             Intent intent = getIntent();
-            tvReplyingTo.setText("Replying to @" + intent.getStringExtra("tweet_username"));
+            tvReplyingTo.setText("Replying to" + intent.getStringExtra("tweet_username"));
         }
         else {
             tvReplyingTo.setVisibility(View.GONE);
